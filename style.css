@@ -51,8 +51,10 @@ header.nav .wrap{display:flex;align-items:center;gap:16px;padding-block:12px}
 /* hero */
 .hero{background:var(--deep);color:var(--deep-ink);position:relative;overflow:hidden}
 .hero .wrap{display:grid;grid-template-columns:1.2fr .8fr;gap:40px;align-items:center;padding-block:64px 72px}
-.hero h1{font-size:clamp(2rem,5vw,3.4rem);font-weight:700}
-.hero h1 span{color:var(--accent)}
+.hero h1{font-size:clamp(1.9rem,5vw,3.4rem);font-weight:700}
+.hero h1 .w{display:inline-block}
+.hero h1 small{display:block;font-size:.62em;font-weight:600;color:var(--accent);margin-top:.35em}
+.hero .wrap:not(:has(.formula)){grid-template-columns:1fr}
 .hero p{color:var(--deep-ink);opacity:.82;max-width:52ch;margin-top:16px;font-size:1.05rem}
 .cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
 .btn{display:inline-block;text-decoration:none;font-weight:600;padding:12px 20px;border-radius:8px;border:1px solid transparent}
@@ -158,8 +160,9 @@ footer .copy{grid-column:1/-1;border-top:1px solid rgba(255,255,255,.15);padding
 .search{font:inherit;font-size:.95rem;padding:9px 14px;border:1px solid var(--line);border-radius:8px;background:var(--surface);color:var(--ink);width:min(100%,280px)}
 .count{font-family:var(--mono);font-size:.8rem;color:var(--muted);margin-bottom:12px}
 .staff.photos .person{padding:0;overflow:hidden;gap:0}
-.photo{aspect-ratio:3/4;max-width:100%;background:var(--tint);display:grid;place-items:center;position:relative}
-.photo img{width:100%;height:100%;object-fit:cover;display:block}
+.photo{aspect-ratio:3/4;max-width:100%;background:var(--tint);display:grid;place-items:center;position:relative;overflow:hidden}
+.photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 20%;display:block}
+.photo .badge{z-index:1}
 .photo .ini{font-family:var(--display);font-size:2.4rem;font-weight:700;color:var(--accent)}
 .photo .badge{position:absolute;left:10px;top:10px;background:var(--accent);color:var(--accent-ink);font-size:.72rem;font-weight:600;padding:3px 9px;border-radius:99px}
 .person .body{padding:16px 16px 18px;display:flex;flex-direction:column;gap:6px}
