@@ -40,6 +40,13 @@
 
 <main id="top">
 <section class="hero" style="padding:0">
+    <!-- ===== รูปสไลด์ในแบนเนอร์: เพิ่ม/ลบรูปได้ที่นี่ ===== -->
+  <div class="slides" id="slides" aria-hidden="true">
+    <img src="images/slide4.jpg" alt="" style="object-position:right 70%">
+    <img src="images/slide2.jpg" alt="" style="object-position:center 65%">
+    <img src="images/slide1.jpg" alt="" style="object-position:center 55%">
+    <img src="images/slide3.jpg" alt="" style="object-position:center 70%">
+  </div>
   <div class="wrap">
     <div>
       <p class="eyebrow" style="color:var(--accent)">School of Polymer Engineering</p>
@@ -203,5 +210,22 @@ drawAll();addEventListener('resize',drawAll);
 matchMedia('(prefers-color-scheme: dark)').addEventListener('change',drawAll);
 </script>
 
+<!-- ===== สไลด์รูปในแบนเนอร์ เปลี่ยนรูปทุก 5 วินาที ===== -->
+<script>
+(function(){
+  const box=document.getElementById('slides'); if(!box) return;
+  let imgs=[...box.querySelectorAll('img')];
+  imgs.forEach(im=>im.addEventListener('error',()=>{im.remove();imgs=imgs.filter(x=>x!==im);if(!imgs.some(x=>x.classList.contains('on'))&&imgs[0])imgs[0].classList.add('on')}));
+  if(!imgs.length) return;
+  let i=0; imgs[0].classList.add('on');
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  setInterval(()=>{
+    if(document.hidden||imgs.length<2) return;
+    imgs[i%imgs.length].classList.remove('on');
+    i=(i+1)%imgs.length;
+    imgs[i].classList.add('on');
+  },5000);
+})();
+</script>
 </body>
 </html>
