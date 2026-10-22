@@ -203,3 +203,14 @@ footer .copy{grid-column:1/-1;border-top:1px solid rgba(255,255,255,.15);padding
 .contact div{display:flex;flex-direction:column}
 .contact small{color:var(--muted);font-size:.8rem}
 .contact b{font-family:var(--mono);font-weight:500;user-select:all}
+
+
+/* ---- banner slideshow ---- */
+.slides{position:absolute;inset:0;overflow:hidden}
+.slides img{position:absolute;inset:0;width:100%;height:100%;max-width:none;object-fit:cover;opacity:0;transform:scale(1.04);transition:opacity 1.4s ease,transform 6s ease}
+.slides img.on{opacity:1;transform:scale(1)}
+.slides::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(14,32,43,.92) 0%,rgba(14,32,43,.75) 45%,rgba(14,32,43,.35) 100%)}
+.hero .wrap{position:relative;z-index:1}
+#chain{z-index:1}
+@media (max-width:760px){.slides::after{background:rgba(14,32,43,.8)}}
+@media (prefers-reduced-motion:reduce){.slides img{transition:none;transform:none}}
