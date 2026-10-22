@@ -1,17 +1,17 @@
 /* Layout: sticky nav, chain-motif hero, alternating bands; content max 1120px */
 :root{
   --bg:#f6f7f8; --surface:#ffffff; --ink:#15212b; --muted:#5a6873; --line:#dde3e7;
-  --accent:#e06a12; --accent-ink:#ffffff; --deep:#0e2463; --deep-ink:#eef3f6; --tint:#fdf1e7;
+  --accent:#e06a12; --accent-ink:#ffffff; --deep:#0f2b51; --deep-ink:#eef3f6; --tint:#fdf1e7;
   --display:"Bai Jamjuree","IBM Plex Sans Thai",system-ui,sans-serif;
   --body:"IBM Plex Sans Thai",system-ui,sans-serif;
   --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
 }
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
   --bg:#0f171d; --surface:#16212a; --ink:#e7edf1; --muted:#9aa9b4; --line:#26343f;
-  --accent:#f08a3c; --accent-ink:#1a0d03; --deep:#0e2463; --deep-ink:#e7edf1; --tint:#2a1c11; color-scheme:dark}}
+  --accent:#f08a3c; --accent-ink:#1a0d03; --deep:#0f2b51; --deep-ink:#e7edf1; --tint:#2a1c11; color-scheme:dark}}
 :root[data-theme="dark"]{
   --bg:#0f171d; --surface:#16212a; --ink:#e7edf1; --muted:#9aa9b4; --line:#26343f;
-  --accent:#f08a3c; --accent-ink:#1a0d03; --deep:#0e2463; --deep-ink:#e7edf1; --tint:#2a1c11; color-scheme:dark}
+  --accent:#f08a3c; --accent-ink:#1a0d03; --deep:#0f2b51; --deep-ink:#e7edf1; --tint:#2a1c11; color-scheme:dark}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
