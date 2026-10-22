@@ -227,5 +227,39 @@ matchMedia('(prefers-color-scheme: dark)').addEventListener('change',drawAll);
   },5000);
 })();
 </script>
+<!-- ===== สายโซ่พอลิเมอร์เคลื่อนไหวในแบนเนอร์ (ลบก้อนนี้ทิ้งได้ ถ้าอยากให้หยุดนิ่ง) ===== -->
+<script>
+(function(){
+  const cv=document.getElementById('chain');
+  if(!cv || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const c=cv.getContext('2d');
+  let w=0,h=0,running=true,color='';
+  function size(){const r=cv.getBoundingClientRect(),d=devicePixelRatio||1;w=r.width;h=r.height;cv.width=w*d;cv.height=h*d;c.setTransform(d,0,0,d,0,0)}
+  function readColor(){color=getComputedStyle(document.documentElement).getPropertyValue('--accent').trim()}
+  size();readColor();
+  addEventListener('resize',size);
+  matchMedia('(prefers-color-scheme: dark)').addEventListener('change',readColor);
+  new IntersectionObserver(e=>{running=e[0].isIntersecting;if(running)requestAnimationFrame(frame)}).observe(cv);
+  const step=26;
+  function chain(s,speed,amp,stroke,dot,r){
+    const off=((s*speed)%(step*2)+step*2)%(step*2),pts=[];
+    for(let x=-step*2+off,i=0;x<w+step*2;x+=step,i++){
+      pts.push([x,h/2+(i%2?amp:-amp)+Math.sin(x/90-s*1.4)*7]);
+    }
+    c.strokeStyle=stroke;c.lineWidth=2;c.beginPath();
+    pts.forEach((p,i)=>i?c.lineTo(p[0],p[1]):c.moveTo(p[0],p[1]));c.stroke();
+    c.fillStyle=dot;pts.forEach(p=>{c.beginPath();c.arc(p[0],p[1],r,0,7);c.fill()});
+  }
+  function frame(t){
+    if(!running) return;
+    const s=t/1000;
+    c.clearRect(0,0,w,h);
+    chain(s,-10,6,'rgba(255,255,255,.25)','rgba(255,255,255,.4)',2.2);
+    chain(s,18,10,color,color,3);
+    requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+})();
+</script>
 </body>
 </html>
