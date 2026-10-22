@@ -4,17 +4,31 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>ยื่นขอสอบโครงงาน | Polymer Engineering SUT</title>
-<!-- ===== หน้านี้พาไประบบ PE Capstone Portal แบบเต็มหน้าจอทันที =====
-     ถ้าลิงก์ระบบเปลี่ยน แก้ลิงก์ 3 ที่ด้านล่างให้ตรงกัน                -->
-<meta http-equiv="refresh" content="0; url=https://script.google.com/macros/s/AKfycbzdhA7ynuhcWVTHRN99g-9eAeKcKo7iVfY4jzx4txKWMzQ4RDmGV2OPSmr120cJtrgMoQ/exec">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bai+Jamjuree:wght@500;600;700&family=IBM+Plex+Sans+Thai:wght@400;500;600&display=swap">
 <link rel="stylesheet" href="style.css">
-<style>body{margin:0;min-height:100vh;display:grid;place-items:center;background:var(--bg);color:var(--ink);font-family:var(--body);text-align:center;padding:24px}</style>
+<style>
+  /* หน้าระบบ Capstone แบบเต็มจอ: แถบบนเล็ก ๆ + ระบบเต็มพื้นที่ที่เหลือ */
+  html,body{margin:0;height:100%;overflow:hidden;background:var(--bg)}
+  .cbar-top{height:52px;display:flex;align-items:center;gap:12px;padding:0 16px;background:var(--deep);color:var(--deep-ink)}
+  .cbar-top img{width:32px;height:32px;object-fit:contain;border-radius:6px;background:#fff}
+  .cbar-top b{font-family:var(--display);font-size:.98rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .cbar-top nav{margin-left:auto;display:flex;gap:6px;flex:none}
+  .cbar-top a{color:var(--deep-ink);text-decoration:none;font-size:.88rem;padding:6px 12px;border:1px solid rgba(255,255,255,.25);border-radius:8px;white-space:nowrap}
+  .cbar-top a:hover{border-color:var(--accent);color:var(--accent)}
+  .full{display:block;width:100%;height:calc(100% - 52px);border:0}
+  @media (max-width:520px){.cbar-top b{display:none}.cbar-top .hide-s{display:none}}
+</style>
 </head>
 <body>
-  <div>
-    <p>กำลังเปิดระบบ PE Capstone Portal…</p>
-    <p style="margin-top:12px"><a class="btn primary" href="https://script.google.com/macros/s/AKfycbzdhA7ynuhcWVTHRN99g-9eAeKcKo7iVfY4jzx4txKWMzQ4RDmGV2OPSmr120cJtrgMoQ/exec">ถ้าไม่เปิดเอง กดที่นี่</a></p>
+  <div class="cbar-top">
+    <a href="index.html" style="border:0;padding:0"><img src="images/logo.jpg" alt="หน้าแรก"></a>
+    <b>วิศวกรรมพอลิเมอร์ · ยื่นขอสอบโครงงาน</b>
+    <nav>
+      <a href="project.html">← กลับหน้าโครงงาน</a>
+      <a class="hide-s" href="index.html">หน้าแรก</a>
+    </nav>
   </div>
-<script>location.replace('https://script.google.com/macros/s/AKfycbzdhA7ynuhcWVTHRN99g-9eAeKcKo7iVfY4jzx4txKWMzQ4RDmGV2OPSmr120cJtrgMoQ/exec');</script>
+  <!-- ===== ระบบ PE Capstone Portal (ถ้าลิงก์ระบบเปลี่ยน แก้ที่ src ด้านล่าง) ===== -->
+  <iframe class="full" src="https://script.google.com/macros/s/AKfycbzdhA7ynuhcWVTHRN99g-9eAeKcKo7iVfY4jzx4txKWMzQ4RDmGV2OPSmr120cJtrgMoQ/exec" title="PE Capstone Portal"></iframe>
 </body>
 </html>
