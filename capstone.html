@@ -51,9 +51,32 @@
 </div></div>
 
 <!-- ===== ระบบ PE Capstone Portal (ฝังจาก Google Apps Script) ===== -->
-<div class="portal-frame">
-  <iframe src="https://script.google.com/macros/s/AKfycbzdhA7ynuhcWVTHRN99g-9eAeKcKo7iVfY4jzx4txKWMzQ4RDmGV2OPSmr120cJtrgMoQ/exec" title="PE Capstone Portal" loading="lazy"></iframe>
+<div class="portal-frame" id="portalFrame">
+  <!-- ป้ายกำลังโหลด: หายไปเองเมื่อระบบโหลดเสร็จ -->
+  <div class="portal-loading" id="portalLoading" role="status">
+    <span class="spin" aria-hidden="true"></span>
+    <b>กำลังโหลดระบบ PE Capstone Portal…</b>
+    <small>ระบบอาจใช้เวลาเปิดสักครู่</small>
+  </div>
+  <iframe id="portalIframe" src="https://script.google.com/macros/s/AKfycbzdhA7ynuhcWVTHRN99g-9eAeKcKo7iVfY4jzx4txKWMzQ4RDmGV2OPSmr120cJtrgMoQ/exec" title="PE Capstone Portal"></iframe>
 </div>
+<style>
+  .portal-frame{position:relative}
+  .portal-loading{position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding-top:120px;gap:10px;background:var(--bg);color:var(--ink);text-align:center;transition:opacity .4s}
+  .portal-loading small{color:var(--muted)}
+  .portal-loading.done{opacity:0;pointer-events:none}
+  .spin{width:44px;height:44px;border-radius:50%;border:4px solid var(--line);border-top-color:var(--accent);animation:spin .9s linear infinite}
+  @keyframes spin{to{transform:rotate(360deg)}}
+  @media (prefers-reduced-motion:reduce){.spin{animation-duration:2.5s}}
+</style>
+<script>
+  (function(){
+    var f=document.getElementById('portalIframe'),l=document.getElementById('portalLoading');
+    function done(){ setTimeout(function(){ l.classList.add('done'); }, 1500); }
+    f.addEventListener('load', done);
+    setTimeout(function(){ l.classList.add('done'); }, 25000); // กันค้าง: ซ่อนเองหลัง 25 วินาที
+  })();
+</script>
 </main>
   
 <footer id="contact"><div class="wrap">
