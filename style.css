@@ -214,3 +214,8 @@ footer .copy{grid-column:1/-1;border-top:1px solid rgba(255,255,255,.15);padding
 #chain{z-index:1}
 @media (max-width:760px){.slides::after{background:rgba(14,32,43,.8)}}
 @media (prefers-reduced-motion:reduce){.slides img{transition:none;transform:none}}
+
+
+/* ---- capstone portal page ---- */
+.portal-frame{background:var(--bg);border-bottom:1px solid var(--line)}
+.portal-frame iframe{display:block;width:100%;height:calc(100vh - 120px);min-height:720px;border:0}
