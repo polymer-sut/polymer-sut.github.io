@@ -32,6 +32,7 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .strip .wrap{display:flex;flex-wrap:wrap;gap:6px 20px;justify-content:space-between;padding-block:6px}
 .strip nav{display:flex;flex-wrap:wrap;gap:4px 16px}
 .strip a{text-decoration:none;opacity:.85}.strip a:hover{opacity:1}
+.strip a[aria-current="page"]{opacity:1;color:var(--accent);font-weight:600;background:rgba(255,255,255,.1);padding:1px 10px;border-radius:6px}
 header.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;background:var(--surface);border-bottom:1px solid var(--line)}
 header.nav .wrap{display:flex;align-items:center;gap:16px;padding-block:12px}
 .brand{display:flex;align-items:center;gap:10px;text-decoration:none;min-width:0}
