@@ -7,6 +7,24 @@
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bai+Jamjuree:wght@500;600;700&family=IBM+Plex+Sans+Thai:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <link rel="stylesheet" href="style.css">
+<style>
+/* ===== ป้ายรุ่น / กล่องแจ้งเตือนรุ่น ===== */
+.chip.new{background:#1f8a5b;color:#fff}
+.cohort-note{display:flex;gap:12px;align-items:flex-start;margin:0 0 20px;padding:14px 18px;border-radius:10px;border:1px solid var(--line);border-left:4px solid var(--accent);background:var(--surface)}
+.cohort-note>div>b{display:block;margin-bottom:2px}
+.cohort-note p{margin:0;color:var(--muted);font-size:.94rem}
+.cohort-note .ic{font-size:1.2rem;line-height:1.4}
+[data-only][hidden]{display:none}
+.cohorts{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin:0 0 16px}
+.cohorts-lbl{font-weight:600;margin-right:4px}
+.cohorts button{font:inherit;text-align:left;display:flex;flex-direction:column;gap:1px;padding:10px 16px;border-radius:10px;border:1px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer}
+.cohorts button b{font-family:var(--display);font-size:1rem}
+.cohorts button span{font-size:.78rem;color:var(--muted)}
+.cohorts button:hover{border-color:var(--accent)}
+.cohorts button[aria-selected="true"]{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.cohorts button[aria-selected="true"] span{color:var(--accent-ink);opacity:.9}
+.cohorts button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+</style>
 <style>body{margin:0}:root{padding-block:env(safe-area-inset-top,0px) env(safe-area-inset-bottom,0px)}</style>
 </head>
 <body>
@@ -45,7 +63,7 @@
   <!-- ===== ปุ่มเลือกหลักสูตรตามรุ่นนักศึกษา ===== -->
   <div class="versions" role="tablist" aria-label="เลือกหลักสูตรตามรุ่นนักศึกษา">
     <button type="button" role="tab" id="v-2564" data-v="2564" aria-selected="true"><b>หลักสูตร 2564</b><span>สำหรับนักศึกษา B64–B68</span></button>
-    <button type="button" role="tab" id="v-2569" data-v="2569" aria-selected="false"><b>หลักสูตร 2569</b><span>สำหรับนักศึกษา B69–B73</span></button>
+    <button type="button" role="tab" id="v-2569" data-v="2569" aria-selected="false"><b>หลักสูตร 2569</b><span>สำหรับนักศึกษา B69 ขึ้นไป</span></button>
   </div>
 </div></div>
 
@@ -106,6 +124,11 @@
     <h2>โครงสร้างหลักสูตร</h2>
     <p class="lede">เรียนตลอดหลักสูตรไม่น้อยกว่า 190 หน่วยกิต แบ่งเป็น 4 หมวด</p>
   </div>
+  <div class="cohorts" role="tablist" aria-label="เลือกโครงสร้างหลักสูตรตามรุ่น">
+    <span class="cohorts-lbl">เลือกรุ่นของคุณ</span>
+    <button type="button" role="tab" data-c="64" aria-selected="true"><b>B64 – B66</b><span>หลักสูตร 2564</span></button>
+    <button type="button" role="tab" data-c="67" aria-selected="false"><b>B67 – B68</b><span>หลักสูตร 2564 (ปรับปรุง 2567)</span></button>
+  </div>
   <div class="cbar" id="cbar" aria-hidden="true"></div>
   <div class="ctable" id="ctable"></div>
 </div></section>
@@ -116,6 +139,12 @@
     <h2>แผนการศึกษา</h2>
     <p class="lede">ปีการศึกษาละ 3 ภาค (ไตรภาค) ตัวเลขด้านขวาคือหน่วยกิต วิชาที่มีป้ายสีส้มเกี่ยวกับโครงงานวิศวกรรม</p>
   </div>
+  <div class="cohorts" role="tablist" aria-label="เลือกแผนการศึกษาตามรุ่น">
+    <span class="cohorts-lbl">เลือกรุ่นของคุณ</span>
+    <button type="button" role="tab" id="c-64" data-c="64" aria-selected="true"><b>B64 – B66</b><span>หลักสูตร 2564</span></button>
+    <button type="button" role="tab" id="c-67" data-c="67" aria-selected="false"><b>B67 – B68</b><span>หลักสูตร 2564 (ปรับปรุง 2567)</span></button>
+  </div>
+  <div class="cohort-note" data-only="67" hidden><span class="ic">ℹ️</span><div><b>แผนการศึกษาของ B67–B68 ต่างจากรุ่น B64–B66</b><p>วิชาเฉพาะเหมือนเดิม แต่<b>หมวดวิชาศึกษาทั่วไปเปลี่ยน</b> (กลุ่มวิชาแกน 10 หน่วยกิต และวิชาศึกษาทั่วไปแบบเลือก 13 หน่วยกิต) วิชาที่มีป้ายสีเขียว <span class="chip new">B67–68</span> คือวิชาที่ต่างจากรุ่นพี่ ห้ามลงตามแผนของรุ่นอื่น เพราะหน่วยกิตอาจไม่ถูกนับให้จบ</p></div></div>
   <div id="planBox"></div>
 </div></section>
 
@@ -151,16 +180,107 @@
 </div>
 <!-- ======================= จบหลักสูตร 2564 ======================= -->
 
-<!-- ======================= หลักสูตร 2569 (รอข้อมูล) ======================= -->
+<!-- ======================= หลักสูตร 2569 ======================= -->
 <div data-version="2569" hidden>
-<section id="v2569" style="padding-block:72px 96px"><div class="wrap">
-  <div class="pending">
-    <span class="tag">B69–B73</span>
-    <h2>หลักสูตร 2569 กำลังจัดทำข้อมูล</h2>
-    <p>รายละเอียดหลักสูตร โครงสร้าง และแผนการศึกษาของหลักสูตรปรับปรุง พ.ศ. 2569 จะเผยแพร่ในหน้านี้เร็ว ๆ นี้ ระหว่างนี้สอบถามได้ที่สาขาวิชาวิศวกรรมพอลิเมอร์ หรืออาจารย์ที่ปรึกษา</p>
+<div class="vbar"><div class="wrap">
+  <dl class="facts">
+    <div><dt>ปริญญา</dt><dd>วศ.บ. (วิศวกรรมพอลิเมอร์)</dd></div>
+    <div><dt>ระยะเวลา</dt><dd>4 ปี ระบบไตรภาค</dd></div>
+    <div><dt>หน่วยกิต</dt><dd>ไม่น้อยกว่า 181</dd></div>
+    <div><dt>ภาษาที่ใช้สอน</dt><dd>ไทย และ/หรือ อังกฤษ</dd></div>
+  </dl>
+  <a class="btn primary" href="mko2-polymer-2569.pdf" target="_blank" rel="noopener">เปิด มคอ.2 หลักสูตร 2569 (PDF)</a>
+</div></div>
+
+<nav class="toc" aria-label="หัวข้อในหน้านี้"><div class="wrap">
+  <a href="#peo69">วัตถุประสงค์ (PEOs)</a>
+  <a href="#plo69">ผลลัพธ์การเรียนรู้ (PLOs)</a>
+  <a href="#structure69">โครงสร้างหลักสูตร</a>
+  <a href="#plan69">แผนการศึกษา</a>
+  <a href="#career69">อาชีพหลังจบ</a>
+</div></nav>
+
+<section id="peo69" style="padding-block:56px 32px"><div class="wrap">
+  <div class="sec-head">
+    <p class="eyebrow">Program Educational Objectives</p>
+    <h2>วัตถุประสงค์ของหลักสูตร (PEOs)</h2>
+    <p class="lede">คุณสมบัติที่บัณฑิตพัฒนาตนเองได้หลังสำเร็จการศึกษา</p>
+  </div>
+  <div class="peo">
+    <article><span class="tag">PEO 1</span><h3>ความสามารถเชิงเทคนิคเฉพาะทาง</h3><p>มีทักษะเฉพาะทางด้านวิศวกรรมพอลิเมอร์ ใช้คณิตศาสตร์และวิทยาศาสตร์สร้างการทดลอง ทดสอบ วิเคราะห์แก้ปัญหาจากข้อมูล แล้วนำไปพัฒนาผลิตภัณฑ์ วัสดุ และกระบวนการได้ตามแผน โดยพัฒนาตนอย่างต่อเนื่องสม่ำเสมอ</p></article>
+    <article><span class="tag">PEO 2</span><h3>ทักษะการทำงานร่วมกับผู้อื่น</h3><p>ปฏิบัติตนเหมาะสม ปรับตัวทำงานร่วมกับผู้อื่นได้ดี ทำงานเป็นทีม และสื่อสารในองค์กรได้อย่างมีประสิทธิภาพ</p></article>
+    <article><span class="tag">PEO 3</span><h3>ความเป็นวิศวกรมืออาชีพ</h3><p>มีความก้าวหน้าในอาชีพ โดยตระหนักถึงจริยธรรมอันดีงามที่เหมาะสมกับวิชาชีพ</p></article>
+    <article><span class="tag">PEO 4</span><h3>ความตระหนักถึงสังคม</h3><p>ตระหนักถึงความต้องการและการเปลี่ยนแปลงของสังคมโลก และการพัฒนาอย่างยั่งยืน</p></article>
   </div>
 </div></section>
+
+<section id="plo69" style="padding-block:32px 56px"><div class="wrap">
+  <div class="sec-head">
+    <p class="eyebrow">Program Learning Outcomes</p>
+    <h2>ผลลัพธ์การเรียนรู้ที่คาดหวัง (PLOs)</h2>
+    <p class="lede">สิ่งที่นักศึกษาทำได้เมื่อเรียนจบหลักสูตร</p>
+  </div>
+  <ol class="plo">
+    <li><span class="tag">PLO 1</span><div><p>สามารถระบุประเด็นปัญหา และหาแนวทางแก้ปัญหาทางวิศวกรรมพอลิเมอร์ที่ซับซ้อนได้ โดยประยุกต์หลักการทางวิศวกรรมศาสตร์ วิทยาศาสตร์ และคณิตศาสตร์</p><p class="en">An ability to identify, formulate, and solve complex polymer engineering problems by applying principles of engineering, science, and mathematics</p></div></li>
+    <li><span class="tag">PLO 2</span><div><p>สามารถประยุกต์ใช้การออกแบบทางวิศวกรรมพอลิเมอร์เพื่อหาผลลัพธ์ที่ตรงตามความต้องการของผู้ใช้ โดยคำนึงถึงการสาธารณสุข ความปลอดภัย สิ่งแวดล้อม และปัจจัยด้านประชาคมโลก วัฒนธรรม เศรษฐกิจ-สังคม และสิ่งแวดล้อม</p><p class="en">An ability to apply polymer engineering design to produce solutions that meet specified needs with consideration of public health, safety, and welfare, as well as global, cultural, social, environmental, and economic factors</p></div></li>
+    <li><span class="tag">PLO 3</span><div><p>สามารถพัฒนาและดำเนินการตรวจสอบ ทดสอบ ทดลองที่เหมาะสม วิเคราะห์และแปลผลข้อมูล โดยใช้วิจารณญาณทางวิศวกรรมพอลิเมอร์เพื่อสรุปผลการทดลอง</p><p class="en">An ability to develop and conduct appropriate experimentation, analyze and interpret data, and use polymer engineering judgement to draw conclusions</p></div></li>
+    <li><span class="tag">PLO 4</span><div><p>สามารถติดต่อสื่อสารในงานวิศวกรรมได้อย่างมีประสิทธิผลกับผู้รับที่หลากหลาย ทั้งภาษาไทยและภาษาต่างประเทศ ด้วยวาจา การเขียนรายงาน การเสนอผลงาน และแบบทางวิศวกรรม</p><p class="en">An ability to communicate effectively with a range of audiences</p></div></li>
+    <li><span class="tag">PLO 5</span><div><p>สามารถทำงานร่วมกับทีมงานอย่างมีประสิทธิผล ทั้งในฐานะสมาชิกและผู้นำ สร้างการมีส่วนร่วมและบรรยากาศการทำงานร่วมกัน กำหนดเป้าหมาย แผนงาน จนทำให้งานสำเร็จ</p><p class="en">An ability to function effectively on a team whose members together provide leadership, create a collaborative and inclusive environment, establish goals, plan tasks, and meet objectives</p></div></li>
+    <li><span class="tag">PLO 6</span><div><p>มีความเข้าใจความรับผิดชอบของวิศวกรตามกรอบมาตรฐานการปฏิบัติวิชาชีพและจรรยาบรรณแห่งวิชาชีพวิศวกรรมพอลิเมอร์ มีวิจารณญาณในการตัดสินใจที่คำนึงถึงผลกระทบต่อโลก เศรษฐกิจ-สังคม และสิ่งแวดล้อม</p><p class="en">An ability to recognize ethical and professional responsibilities in polymer engineering situations and make informed judgements, which must consider the impact of polymer engineering solutions in global, economic, environmental, and societal contexts</p></div></li>
+    <li><span class="tag">PLO 7</span><div><p>สามารถแสวงหาและประยุกต์ใช้ความรู้ใหม่ตามต้องการได้ ด้วยกลยุทธ์การเรียนรู้ที่เหมาะสม</p><p class="en">An ability to acquire and apply new knowledge as needed, using appropriate learning strategies</p></div></li>
+  </ol>
+</div></section>
+
+<section class="band" id="structure69"><div class="wrap">
+  <div class="sec-head">
+    <p class="eyebrow">Curriculum Structure</p>
+    <h2>โครงสร้างหลักสูตร</h2>
+    <p class="lede">เรียนตลอดหลักสูตรไม่น้อยกว่า 181 หน่วยกิต แบ่งเป็น 4 หมวด</p>
+  </div>
+  <div class="cbar" id="cbar69" aria-hidden="true"></div>
+  <div class="ctable" id="ctable69"></div>
+</div></section>
+
+<section id="plan69" style="padding-block:64px 32px"><div class="wrap">
+  <div class="sec-head">
+    <p class="eyebrow">Study Plan</p>
+    <h2>แผนการศึกษา</h2>
+    <p class="lede">ปีการศึกษาละ 3 ภาค (ไตรภาค) ตัวเลขด้านขวาคือหน่วยกิต วิชาที่มีป้ายสีส้มเกี่ยวกับโครงงานวิศวกรรม</p>
+  </div>
+  <div id="planBox69"></div>
+</div></section>
+
+<section id="career69" style="padding-block:32px 72px"><div class="wrap">
+  <div class="sec-head">
+    <p class="eyebrow">Career Paths</p>
+    <h2>อาชีพที่ประกอบได้หลังสำเร็จการศึกษา</h2>
+  </div>
+  <ul class="careers">
+    <li><b>วิศวกรด้านวัสดุพอลิเมอร์ / วิศวกรด้านวัสดุ</b><span>Polymeric Material Engineer / Materials Engineer</span></li>
+    <li><b>วิศวกรกระบวนการผลิต / การขึ้นรูป</b><span>Process / Processing Engineer</span></li>
+    <li><b>วิศวกรออกแบบกระบวนการผลิต</b><span>Process Design Engineer</span></li>
+    <li><b>วิศวกรออกแบบผลิตภัณฑ์</b><span>Product Design Engineer</span></li>
+    <li><b>วิศวกรพัฒนาผลิตภัณฑ์</b><span>Product Development Engineer</span></li>
+    <li><b>วิศวกรด้านงานคุณภาพ</b><span>Quality Engineer</span></li>
+    <li><b>วิศวกรสนับสนุนทางเทคนิค</b><span>Technical Support Engineer</span></li>
+    <li><b>วิศวกรด้านการตลาด</b><span>Marketing Engineer</span></li>
+    <li><b>วิศวกรด้านการขาย</b><span>Sales Engineer</span></li>
+    <li><b>อาจารย์ หรือผู้ช่วยนักวิจัย</b><span>Teacher / Research Assistant</span></li>
+  </ul>
+  <h3 style="margin-top:40px">อุตสาหกรรมเป้าหมาย</h3>
+  <ul class="inds">
+    <li>ชิ้นส่วนยานยนต์ในอนาคตและอากาศยาน</li>
+    <li>ชิ้นงานน้ำหนักเบา</li>
+    <li>วัสดุและอุปกรณ์ทางการแพทย์ และอุปกรณ์กีฬา</li>
+    <li>บรรจุภัณฑ์อาหาร วัสดุอุปกรณ์ทางการแพทย์ และชิ้นส่วนอิเล็กทรอนิกส์</li>
+    <li>สีเคลือบ กาว และวัสดุเคลือบผิว</li>
+    <li>วัสดุและอุปกรณ์ทางการเกษตร</li>
+    <li>วัสดุและอุปกรณ์ก่อสร้าง</li>
+  </ul>
+  <p class="src">ที่มา: มคอ.2 หลักสูตรวิศวกรรมศาสตรบัณฑิต สาขาวิชาวิศวกรรมพอลิเมอร์ (หลักสูตรปรับปรุง พ.ศ. 2569) อนุมัติโดยสภามหาวิทยาลัยเทคโนโลยีสุรนารี ครั้งที่ 1/2569 วันที่ 10 มกราคม 2569 เปิดสอนภาคการศึกษาที่ 1 ปีการศึกษา 2569</p>
+</div></section>
 </div>
+<!-- ======================= จบหลักสูตร 2569 ======================= -->
 </main>
   
 <footer id="contact"><div class="wrap">
@@ -213,7 +333,7 @@ const PLAN = {
   major: [
     Y1,
     [
-      [["IST30 1103","ภาษาอังกฤษเพื่อวัตถุประสงค์ทางวิชาการ",3],["ENG23 2001","การเขียนโปรแกรมคอมพิวเตอร์ 2",2],["ENG28 2101","อุตสาหกรรมพลาสติกและยาง",2],["ENG30 2001","สถิตยศาสตร์วิศวกรรม",4],["ENG33 0402","ความน่าจะเป็นและสถิติสำหรับงานวิศวกรรม",3],["","วิชาศึกษาทั่วไปแบบเลือก (1)",2]],
+      [["IST30 1103","ภาษาอังกฤษเพื่อวัตถุประสงค์ทางวิชาการ",3],["ENG23 2001","การเขียนโปรแกรมคอมพิวเตอร์ 2",2],["ENG28 2101","อุตสาหกรรมพลาสติกและยาง",2],["ENG30 2004","กลศาสตร์วิศวกรรม",4],["ENG33 0402","ความน่าจะเป็นและสถิติสำหรับงานวิศวกรรม",3],["","วิชาศึกษาทั่วไปแบบเลือก (1)",2]],
       Y2T2,
       [["SCI03 2002","ระเบียบวิธีเชิงตัวเลขสำหรับคอมพิวเตอร์",4],["ENG25 2080","กลศาสตร์ของไหล 1",3],["ENG28 2104","หลักวิศวกรรมพอลิเมอร์ 1",3],["ENG28 2002","วิศวกรรมไฟฟ้า",4],["ENG33 6001","กรรมวิธีการผลิตเบื้องต้น",2],["ENG33 6002","ปฏิบัติการกรรมวิธีการผลิตเบื้องต้น",1]]
     ],
@@ -229,41 +349,113 @@ const PLAN = {
     ]
   ]
 };
+
+/* ===== แผนการศึกษา B67–B68: หลักสูตร 2564 (ปรับปรุง 2567) =====
+   วิชาเฉพาะเหมือน 2564 ต่างกันที่หมวดวิชาศึกษาทั่วไป (จากระบบทะเบียน reg.sut.ac.th)
+   ใส่ "n" เป็นช่องที่ 5 = วิชาที่ต่างจาก B64–B66 (ขึ้นป้ายสีเขียว B67–68)                       */
+STRUCTURE.v67 = { total: 190, groups: [
+  { name:"หมวดวิชาศึกษาทั่วไป", cr:38, k:"ge", items:[["กลุ่มวิชาแกนศึกษาทั่วไป",10],["กลุ่มวิชาภาษา",15],["กลุ่มวิชาศึกษาทั่วไปแบบเลือก",13]] },
+  STRUCTURE.major.groups[1], STRUCTURE.major.groups[2], STRUCTURE.major.groups[3]
+]};
+PLAN.v67 = [
+  [
+    [["SCI02 1111","เคมีพื้นฐาน 1",4],["SCI02 1112","ปฏิบัติการเคมีพื้นฐาน 1",1],["SCI03 1001","แคลคูลัส 1",4],["IST20 1007","ความเป็นพลเมือง",3,"","n"],["IST30 1101","ภาษาอังกฤษเพื่อการสื่อสาร 1",3],["ENG25 1010","การเขียนแบบวิศวกรรม 1",2]],
+    [["SCI03 1002","แคลคูลัส 2",4],["SCI05 1001","ฟิสิกส์ 1",4],["SCI05 1191","ปฏิบัติการฟิสิกส์ 1",1],["IST30 1102","ภาษาอังกฤษเพื่อการสื่อสาร 2",3],["ENG23 1001","การเขียนโปรแกรมคอมพิวเตอร์ 1",2],["","วิชาศึกษาทั่วไปแบบเลือก (1)",2,"","n"]],
+    [["SCI03 1005","แคลคูลัส 3",4],["SCI05 1002","ฟิสิกส์ 2",4],["SCI05 1192","ปฏิบัติการฟิสิกส์ 2",1],["DGT00 0110","การรู้สารสนเทศและสื่อดิจิทัล",4,"","n"],["IST20 1006","สมรรถนะการเรียนรู้",3,"","n"],["ENG31 1001","วัสดุวิศวกรรม",4],["ENG20 1010","แนะนำวิชาชีพวิศวกร",1]]
+  ],
+  [
+    [["IST30 1103","ภาษาอังกฤษเพื่อวัตถุประสงค์ทางวิชาการ",3],["ENG23 2001","การเขียนโปรแกรมคอมพิวเตอร์ 2",2],["ENG28 2101","อุตสาหกรรมพลาสติกและยาง",2],["ENG30 2004","กลศาสตร์วิศวกรรม",4],["ENG33 0402","ความน่าจะเป็นและสถิติสำหรับงานวิศวกรรม",3],["","วิชาศึกษาทั่วไปแบบเลือก (2)",2]],
+    Y2T2.filter(c=>c[0]!=="IST20 2001").concat([["","วิชาศึกษาทั่วไปแบบเลือก (3)",3,"","n"]]),
+    PLAN.major[1][2]
+  ],
+  [
+    PLAN.major[2][0].map(c=>c[1]==="วิชาศึกษาทั่วไปแบบเลือก (2)"?["","วิชาศึกษาทั่วไปแบบเลือก (4)",2]:c),
+    PLAN.major[2][1].map(c=>c[1]==="วิชาศึกษาทั่วไปแบบเลือก (3)"?["","วิชาศึกษาทั่วไปแบบเลือก (5)",2]:c),
+    Y3T3.filter(c=>c[0]!=="IST20 2002").concat([["","วิชาเลือกบังคับ (2)",3]])
+  ],
+  [
+    PLAN.major[3][0],
+    PLAN.major[3][1],
+    Y4T3.map(c=>c[1]==="วิชาศึกษาทั่วไปแบบเลือก (4)"?["","วิชาศึกษาทั่วไปแบบเลือก (6)",2]:c)
+  ]
+];
+
+/* ===== หลักสูตร 2569 สำหรับ B69 ขึ้นไป (จาก มคอ.2 หลักสูตรปรับปรุง พ.ศ. 2569) ===== */
+STRUCTURE.v69 = { total: 181, groups: [
+  { name:"หมวดวิชาศึกษาทั่วไป", cr:30, k:"ge", items:[["กลุ่มวิชาแกนศึกษาทั่วไป",10],["กลุ่มวิชาภาษา",15],["กลุ่มวิชาศึกษาทั่วไปแบบเลือก (ไม่น้อยกว่า)",5]] },
+  { name:"หมวดวิชาเฉพาะ", cr:134, k:"core", items:[["กลุ่มวิชาพื้นฐานทางวิทยาศาสตร์และคณิตศาสตร์",38],["กลุ่มวิชาพื้นฐานทางวิศวกรรมศาสตร์",47],["กลุ่มวิชาชีพบังคับทางวิศวกรรมศาสตร์",37],["กลุ่มวิชาเลือกบังคับทางวิศวกรรมศาสตร์ (ไม่น้อยกว่า)",12]] },
+  { name:"หมวดวิชาสหกิจศึกษา", cr:9, k:"coop", items:[["เตรียมสหกิจศึกษา 1 หน่วยกิต และสหกิจศึกษา 8 หน่วยกิต",9]] },
+  { name:"หมวดวิชาเลือกเสรี (ไม่น้อยกว่า)", cr:8, k:"free", items:[["เลือกเรียนวิชาใดก็ได้ที่เปิดสอนในมหาวิทยาลัย",8]] }
+]};
+PLAN.v69 = [
+  [
+    [["SCI02 1111","เคมีพื้นฐาน 1",4],["SCI02 1112","ปฏิบัติการเคมีพื้นฐาน 1",1],["SCI03 1001","แคลคูลัส 1",4],["DGT00 0110","การรู้สารสนเทศและสื่อดิจิทัล",4],["IST30 1101","ภาษาอังกฤษเพื่อการสื่อสาร 1",3],["ENG25 1001","การเขียนแบบวิศวกรรม 1",2]],
+    [["SCI03 1002","แคลคูลัส 2",4],["SCI05 1001","ฟิสิกส์ 1",4],["SCI05 1191","ปฏิบัติการฟิสิกส์ 1",1],["IST20 1006","สมรรถนะการเรียนรู้",3],["IST30 1102","ภาษาอังกฤษเพื่อการสื่อสาร 2",3],["ENG20 1010","แนะนำวิชาชีพวิศวกร",1],["ENG23 1001","การเขียนโปรแกรมคอมพิวเตอร์ 1",2]],
+    [["SCI03 1005","แคลคูลัส 3",4],["SCI05 1002","ฟิสิกส์ 2",4],["SCI05 1192","ปฏิบัติการฟิสิกส์ 2",1],["IST20 1007","ความเป็นพลเมือง",3],["ENG31 1001","วัสดุวิศวกรรม",4]]
+  ],
+  [
+    [["ENG23 2001","การเขียนโปรแกรมคอมพิวเตอร์ 2",2],["ENG28 2504","บทสรุปเนื้อหาวิศวกรรมพอลิเมอร์",2],["ENG30 2004","กลศาสตร์วิศวกรรม",4],["ENG33 0402","ความน่าจะเป็นและสถิติสำหรับงานวิศวกรรม",3],["","วิชาศึกษาทั่วไปแบบเลือก (1)",2],["","วิชาเลือกเสรี (1)",3]],
+    [["IST30 1103","ภาษาอังกฤษเพื่อวัตถุประสงค์ทางวิชาการ",3],["ENG25 2001","การเขียนแบบทางกล",2],["ENG28 2401","เคมีพอลิเมอร์และปฏิกิริยาการเตรียมพอลิเมอร์",3],["ENG28 2402","ปฏิบัติการเตรียมและตรวจสอบพอลิเมอร์",1],["ENG28 2501","การถ่ายโอนความร้อนและการไหลของของไหล",4],["ENG30 2002","กลศาสตร์วัสดุ 1",4]],
+    [["SCI03 2002","ระเบียบวิธีคำนวณเชิงตัวเลขสำหรับคอมพิวเตอร์",4],["ENG25 2011","กลศาสตร์ของไหล 1",3],["ENG28 2502","วิศวกรรมไฟฟ้า",4],["ENG28 2505","โครงสร้างและสมบัติของพอลิเมอร์",4],["ENG28 2506","ปฏิบัติการทดสอบพอลิเมอร์",1],["ENG33 6001","กรรมวิธีการผลิตเบื้องต้น",2],["ENG33 6002","ปฏิบัติการกรรมวิธีการผลิตเบื้องต้น",1]]
+  ],
+  [
+    [["IST30 1104","ภาษาอังกฤษเพื่อวัตถุประสงค์เฉพาะ",3],["ENG28 2503","ปฏิบัติการวิศวกรรมไฟฟ้า",1],["ENG28 3507","หลักการขึ้นรูปพอลิเมอร์",2],["ENG28 3508","ปฏิบัติการการขึ้นรูปพอลิเมอร์",1],["ENG28 3509","วิศวกรรมความปลอดภัย",3],["","วิชาเลือกบังคับ (1)",3],["","วิชาศึกษาทั่วไปแบบเลือก (2)",3]],
+    [["ENG28 3510","เซนเซอร์และระบบควบคุมเครื่องจักร",2],["ENG28 3511","ปฏิบัติการเซนเซอร์และระบบควบคุมเครื่องจักร",1],["ENG28 3512","กระบวนการอัดรีดและฉีดขึ้นรูปพอลิเมอร์",4],["ENG28 3513","เตรียมโครงงานวิศวกรรมพอลิเมอร์",1,"p"],["ENG33 2201","เศรษฐศาสตร์วิศวกรรม",4],["ENG33 2350","หลักการของปัญญาประดิษฐ์และการเรียนรู้เชิงลึก",3],["","วิชาเลือกบังคับ (2)",3]],
+    [["IST30 1105","ภาษาอังกฤษเพื่อการทำงาน",3],["ENG28 3514","การออกแบบหัวรีด",2],["ENG28 3515","ปฏิบัติการออกแบบหัวรีด",1],["ENG28 3516","เวิร์กช็อปเร่งรัดวิศวกรรมการขึ้นรูปและการจัดการ",1],["ENG28 3517","โครงงานวิศวกรรมพอลิเมอร์ขั้นสูง",3,"p"],["ENG33 0403","การควบคุมคุณภาพในอุตสาหกรรม",4],["","วิชาเลือกบังคับ (3)",3]]
+  ],
+  [
+    [["ENG28 4501","การออกแบบแม่พิมพ์",3],["ENG28 4502","ปฏิบัติการออกแบบแม่พิมพ์",1],["ENG28 4503","การออกแบบผลิตภัณฑ์พลาสติกและการเลือกสรรวัสดุ",4],["ENG28 4504","หัวข้อปัจจุบันในอุตสาหกรรมพอลิเมอร์",1],["CWI01 4100","เตรียมสหกิจศึกษาบูรณาการกับการทำงาน",1,"c"],["","วิชาเลือกเสรี (2)",2]],
+    [["ENG28 4791","สหกิจศึกษา 1",8,"c"]],
+    [["","วิชาเลือกบังคับ (4)",3],["","วิชาเลือกเสรี (3)",3]]
+  ]
+];
+
 /* ===== จบข้อมูล ===== */
 
 (function(){
   const YEARS=["ปีที่ 1","ปีที่ 2","ปีที่ 3","ปีที่ 4"], TERMS=["ภาคการศึกษาที่ 1","ภาคการศึกษาที่ 2","ภาคการศึกษาที่ 3"];
   const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
-  function renderStructure(t){
+  function renderStructure(t,sfx){
+    sfx=sfx||'';
     const S=STRUCTURE[t];
-    document.getElementById('cbar').innerHTML=S.groups.map(g=>`<span class="seg k-${g.k}" style="flex:${g.cr}"><b>${g.cr}</b></span>`).join('');
-    document.getElementById('ctable').innerHTML=S.groups.map(g=>`
+    document.getElementById('cbar'+sfx).innerHTML=S.groups.map(g=>`<span class="seg k-${g.k}" style="flex:${g.cr}"><b>${g.cr}</b></span>`).join('');
+    document.getElementById('ctable'+sfx).innerHTML=S.groups.map(g=>`
       <div class="cgroup"><div class="chead"><i class="dot k-${g.k}"></i><b>${esc(g.name)}</b><span class="n">${g.cr}</span></div>
       <ul>${g.items.map(i=>`<li><span>${esc(i[0])}</span><span class="n">${i[1]}</span></li>`).join('')}</ul></div>`).join('')
       +`<div class="ctotal"><b>รวมตลอดหลักสูตร ไม่น้อยกว่า</b><span class="n">${S.total} หน่วยกิต</span></div>`;
   }
-  function renderPlan(t){
+  function renderPlan(t,sfx){
+    sfx=sfx||'';
     let grand=0;
-    document.getElementById('planBox').innerHTML=PLAN[t].map((yr,yi)=>`
+    document.getElementById('planBox'+sfx).innerHTML=PLAN[t].map((yr,yi)=>`
       <details class="year"${yi===0?' open':''}><summary><b>${YEARS[yi]}</b><span>${yr.map(tm=>tm.reduce((a,c)=>a+c[2],0)).join(' + ')} หน่วยกิต</span></summary>
       <div class="terms">${yr.map((tm,ti)=>{const sum=tm.reduce((a,c)=>a+c[2],0);grand+=sum;return `
         <div class="term"><h4>${TERMS[ti]}</h4><ul>${tm.map(c=>`
-          <li class="${c[0]?'':'elective'}">${c[0]?`<code>${esc(c[0])}</code>`:''}<span class="nm">${esc(c[1])}${c[3]==='p'?' <a class="chip" href="project.html">โครงงาน</a>':''}${c[3]==='c'?' <span class="chip alt">สหกิจ</span>':''}</span><span class="n">${c[2]}</span></li>`).join('')}
+          <li class="${c[0]?'':'elective'}">${c[0]?`<code>${esc(c[0])}</code>`:''}<span class="nm">${esc(c[1])}${c[3]==='p'?' <a class="chip" href="project.html">โครงงาน</a>':''}${c[3]==='c'?' <span class="chip alt">สหกิจ</span>':''}${c[4]==='n'?' <span class="chip new">B67–68</span>':''}</span><span class="n">${c[2]}</span></li>`).join('')}
         </ul><div class="tsum"><span>รวม</span><span class="n">${sum}</span></div></div>`}).join('')}</div></details>`).join('')
       +`<p class="ptotal">รวมตลอดหลักสูตร <b>${grand}</b> หน่วยกิต</p>`;
   }
-  renderStructure('major');renderPlan('major');
+  renderStructure('major');renderPlan('major');renderStructure('v69','69');renderPlan('v69','69');
 
   /* ปุ่มเลือกหลักสูตร 2564 / 2569 (ลิงก์ตรงได้ด้วย #c2564 หรือ #c2569) */
   function setVersion(v){
     document.querySelectorAll('.versions [role=tab]').forEach(b=>b.setAttribute('aria-selected',b.dataset.v===v));
     document.querySelectorAll('[data-version]').forEach(el=>el.hidden=el.dataset.version!==v);
   }
+  /* ปุ่มเลือกรุ่นในแผนการศึกษา (หลักสูตร 2564): B64–B66 / B67–B68 */
+  function setCohort(c){
+    document.querySelectorAll('.cohorts [role=tab]').forEach(b=>b.setAttribute('aria-selected',b.dataset.c===c));
+    document.querySelectorAll('[data-only]').forEach(el=>el.hidden=el.dataset.only!==c);
+    renderStructure(c==='67'?'v67':'major');renderPlan(c==='67'?'v67':'major');
+  }
+  document.querySelectorAll('.cohorts [role=tab]').forEach(b=>b.addEventListener('click',()=>setCohort(b.dataset.c)));
   document.querySelectorAll('.versions [role=tab]').forEach(b=>b.addEventListener('click',()=>setVersion(b.dataset.v)));
-  /* ลิงก์ตรง: #c2564 #c2569 หรือ #c2564-plan (เปิดหลักสูตรแล้วเลื่อนไปที่แผนการศึกษา) */
-  const h=location.hash;
-  setVersion(h.indexOf('2569')>-1?'2569':'2564');
-  if(h.indexOf('-plan')>-1){const t=document.getElementById(h.indexOf('2569')>-1?'v2569':'plan');if(t)setTimeout(()=>t.scrollIntoView(),50);}
+  /* ลิงก์ตรง: #c2564 #c2569 และต่อท้าย -plan เพื่อเลื่อนไปที่แผนการศึกษา เช่น #c2569-plan
+     #b67 = เปิดแผนของ B67–B68 ทันที */
+  const h=location.hash, hv=h.indexOf('2569')>-1?'2569':'2564';
+  setVersion(hv);
+  if(h.indexOf('b67')>-1){setCohort('67');const t=document.getElementById('plan');if(t)setTimeout(()=>t.scrollIntoView(),50);}
+  if(h.indexOf('-plan')>-1){const t=document.getElementById(hv==='2569'?'plan69':'plan');if(t)setTimeout(()=>t.scrollIntoView(),50);}
 })();
 </script>
 <script>
