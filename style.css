@@ -364,3 +364,43 @@ a.pcard:hover{border-color:var(--accent)}
 .links.cohort a{border-left:4px solid var(--accent)}
 .links.cohort b{font-size:1.1rem}
 @media (max-width:480px){.links.cohort{grid-template-columns:1fr}}
+
+/* ===== เมนูย่อย (dropdown) ใต้ "นักศึกษาปัจจุบัน" ในแถบบนสุด ===== */
+.strip .dd{position:relative;display:flex}
+.strip .dd::after{content:"";position:absolute;left:0;right:0;top:100%;height:10px}
+.strip .dd .caret{font-size:.7em;margin-left:3px}
+.strip .dd-menu{display:none;position:absolute;right:0;top:calc(100% + 8px);z-index:30;min-width:230px;padding:6px;background:var(--surface);border:1px solid var(--line);border-radius:10px;box-shadow:0 10px 28px rgba(10,25,35,.18)}
+.strip .dd:hover .dd-menu,.strip .dd:focus-within .dd-menu{display:block}
+.strip .dd-menu a{display:block;padding:8px 12px;border-radius:6px;color:var(--ink);opacity:1;font-size:.88rem;white-space:nowrap}
+.strip .dd-menu a:hover,.strip .dd-menu a:focus-visible{background:var(--tint);color:var(--accent)}
+/* ===== หน้าแบบฟอร์มคำร้อง ===== */
+.form-groups{display:flex;flex-direction:column;gap:36px}
+.form-group h2{font-size:1.25rem;margin-bottom:12px}
+.form-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px}
+.form-item{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px 18px;text-decoration:none;display:flex;flex-direction:column;gap:4px;min-width:0}
+a.form-item:hover{border-color:var(--accent)}
+.form-item b{font-family:var(--display)}
+.form-item span{color:var(--muted);font-size:.88rem}
+.form-item em{font-style:normal;font-weight:600;font-size:.85rem;color:var(--accent);margin-top:6px}
+.form-item.pending-link{border-style:dashed}
+.form-item.pending-link em{color:var(--muted)}
+/* ===== หน้าตรวจสอบการจบ ===== */
+.grad-table{overflow-x:auto;border:1px solid var(--line);border-radius:10px;background:var(--surface)}
+.grad-table table{width:100%;border-collapse:collapse;font-size:.94rem;min-width:520px}
+.grad-table th,.grad-table td{padding:12px 16px;text-align:left;border-bottom:1px solid var(--line)}
+.grad-table th{font-family:var(--display);background:var(--bg)}
+.grad-table td+td,.grad-table th+th{text-align:center;font-variant-numeric:tabular-nums;width:18%}
+.grad-table tr.sum td{font-weight:700;border-bottom:0}
+/* ===== หน้าอาจารย์ที่ปรึกษาประจำรุ่น ===== */
+.adv-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px}
+.adv-card{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:18px;display:flex;flex-direction:column;gap:14px;min-width:0}
+.adv-card header{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;border-bottom:1px solid var(--line);padding-bottom:10px}
+.adv-card header b{font-family:var(--display);font-size:1.4rem;color:var(--accent)}
+.adv-card header span{color:var(--muted);font-size:.85rem}
+.adv-person{display:grid;grid-template-columns:48px 1fr;gap:12px;align-items:center}
+.adv-person img{width:48px;height:48px;border-radius:50%;object-fit:cover;object-position:center 20%;background:var(--line)}
+.adv-person div{display:flex;flex-direction:column;min-width:0}
+.adv-person b{font-size:.95rem}
+.adv-person a{color:var(--accent);font-size:.88rem;overflow-wrap:anywhere}
+.adv-person span{color:var(--muted);font-size:.85rem}
+.adv-empty{color:var(--muted);font-size:.9rem;font-style:italic}
