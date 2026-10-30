@@ -417,3 +417,14 @@ body::before{background:var(--deep)}
 @media (max-width:900px){.strip .wrap > span{display:none}.strip nav{margin-left:auto;margin-right:auto}}
 @media (max-width:600px){.strip{font-size:.76rem}.strip nav{flex-wrap:nowrap;gap:0 10px;white-space:nowrap}.strip a[aria-current="page"]{padding:1px 6px}}
 @media (max-width:380px){.strip{font-size:.7rem}.strip nav{gap:0 7px}.strip .dd .caret{margin-left:1px}}
+
+/* ===== PE Workspace ===== */
+.strip a.ws{display:inline-flex;align-items:center;gap:5px}
+.strip .lock{flex:none}
+.ws-head h1 span{display:block;font-size:.5em;font-weight:600;opacity:.85;margin-top:6px}
+.ws-only{display:inline-flex;align-items:center;gap:8px;align-self:flex-start;font-size:.88rem;opacity:1!important;background:rgba(255,255,255,.1);padding:6px 12px;border-radius:8px}
+.ws-plan{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:28px}
+.ws-plan div{background:var(--surface);border:1px dashed var(--line);border-radius:10px;padding:16px 18px;display:flex;flex-direction:column;gap:4px;min-width:0}
+.ws-plan b{font-family:var(--display)}
+.ws-plan span{color:var(--muted);font-size:.88rem}
+@media (max-width:760px){.ws-plan{grid-template-columns:1fr}}
