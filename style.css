@@ -404,3 +404,16 @@ a.form-item:hover{border-color:var(--accent)}
 .adv-person a{color:var(--accent);font-size:.88rem;overflow-wrap:anywhere}
 .adv-person span{color:var(--muted);font-size:.85rem}
 .adv-empty{color:var(--muted);font-size:.9rem;font-style:italic}
+
+
+/* ===== แถบบนสุด (ผู้สนใจเข้าศึกษา / นักศึกษาปัจจุบัน ...) ค้างไว้ด้านบนตอนเลื่อนหน้า ===== */
+:root{--strip-h:36px}
+.strip{position:sticky;top:env(safe-area-inset-top,0px);z-index:11;min-height:var(--strip-h);display:flex;align-items:center}
+.strip .wrap{width:100%;flex-wrap:nowrap}
+header.nav{top:calc(env(safe-area-inset-top,0px) + var(--strip-h))}
+.toc{top:calc(env(safe-area-inset-top,0px) + var(--strip-h) + 64px)}
+section[id]{scroll-margin-top:166px}
+body::before{background:var(--deep)}
+@media (max-width:900px){.strip .wrap > span{display:none}.strip nav{margin-left:auto;margin-right:auto}}
+@media (max-width:600px){.strip{font-size:.76rem}.strip nav{flex-wrap:nowrap;gap:0 10px;white-space:nowrap}.strip a[aria-current="page"]{padding:1px 6px}}
+@media (max-width:380px){.strip{font-size:.7rem}.strip nav{gap:0 7px}.strip .dd .caret{margin-left:1px}}
