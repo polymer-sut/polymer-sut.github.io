@@ -25,8 +25,7 @@
         <a href="advisors.html">อาจารย์ที่ปรึกษาประจำรุ่น</a>
       </div>
     </div>
-    <a href="index.html#contact">ศิษย์เก่า</a>
-    <a href="index.html#services">ภาคอุตสาหกรรม</a>
+    <a class="ws" href="workspace.html"><svg class="lock" viewBox="0 0 16 16" width="11" height="11" aria-hidden="true"><path d="M4.5 7V5a3.5 3.5 0 0 1 7 0v2h.5a1 1 0 0 1 1 1v6a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1zm1.5 0h4V5a2 2 0 0 0-4 0z" fill="currentColor"/></svg>PE Workspace</a>
   </nav>
 </div></div>
 
@@ -71,6 +70,9 @@
 </div>
 <style>
   .portal-frame{position:relative}
+  /* หน้านี้: แถบเมนูด้านบนไม่ค้าง เลื่อนหายได้ ระบบ Portal จะได้เต็มจอ */
+  .strip,header.nav{position:static}
+  .portal-frame iframe{height:100vh;height:100dvh;min-height:640px}
   .portal-loading{position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding-top:120px;gap:10px;background:var(--bg);color:var(--ink);text-align:center;transition:opacity .4s}
   .portal-loading small{color:var(--muted)}
   .portal-loading.done{opacity:0;pointer-events:none}
