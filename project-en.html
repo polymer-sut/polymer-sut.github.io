@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Capstone Polymer Engineering Project | School of Polymer Engineering, SUT</title>
+<link rel="alternate" hreflang="th" href="project.html">
+<link rel="alternate" hreflang="en" href="project-en.html">
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bai+Jamjuree:wght@500;600;700&family=IBM+Plex+Sans+Thai:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="style.css">
+<style>body{margin:0}:root{padding-block:env(safe-area-inset-top,0px) env(safe-area-inset-bottom,0px)}</style>
+</head>
+<body>
+
+<div class="strip"><div class="wrap">
+  <span>Institute of Engineering, Suranaree University of Technology</span>
+  <nav aria-label="Links by audience">
+    <a href="programs.html">Prospective Students</a>
+    <div class="dd"><a href="students.html" aria-current="page">Current Students<span class="caret" aria-hidden="true">▾</span></a>
+      <div class="dd-menu">
+        <a href="students.html#studyplan">Study Plans</a>
+        <a href="project-en.html">Capstone Project</a>
+        <a href="capstone.html">Project Exam Request</a>
+        <a href="forms.html">Petition Forms</a>
+        <a href="graduation.html">Graduation Check</a>
+        <a href="advisors.html">Cohort Advisors</a>
+      </div>
+    </div>
+    <a class="ws" href="workspace.html"><svg class="lock" viewBox="0 0 16 16" width="11" height="11" aria-hidden="true"><path d="M4.5 7V5a3.5 3.5 0 0 1 7 0v2h.5a1 1 0 0 1 1 1v6a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1zm1.5 0h4V5a2 2 0 0 0-4 0z" fill="currentColor"/></svg>PE Workspace</a>
+  </nav>
+</div></div>
+
+<header class="nav"><div class="wrap">
+  <a class="brand" href="index.html" aria-label="Home">
+  <img src="images/logo.jpg" alt="" width="40" height="40" style="object-fit:contain"> 
+    <span><b>Polymer Engineering</b><small>School of Polymer Engineering, SUT</small></span>
+  </a>
+  <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menu">Menu</button>
+  <nav class="menu" id="menu" aria-label="Main menu">
+    <a href="programs.html">Programs</a>
+    <a href="index.html#research">Research</a>
+    <a href="staff.html">People</a>
+    <a href="index.html#news">News</a>
+    <a href="index.html#services">Testing Services</a>
+    <a href="index.html#contact">Contact</a>
+  </nav>
+</div></header>
+
+<main>
+<div class="page-head"><div class="wrap" style="padding-block:44px 64px">
+  <p class="crumbs"><a href="index.html">Home</a> / <a href="students.html">Current Students</a> / Capstone Project</p>
+  <a class="lang-sw" href="project.html" hreflang="th" lang="th">🌐 ภาษาไทย</a>
+  <h1>Capstone Polymer Engineering Project</h1>
+  <p>How to request laboratory access, apply for project funding, and download the required forms. For students enrolled in the project course from Trimester 2/2025 (2/2568) onwards.</p>
+  <div class="cta"><a class="btn primary" href="https://sutoffice365-my.sharepoint.com/:b:/g/personal/253027_office365_sut_ac_th/EcWE-rXZLO1BsYa_o-PBh3ABCODqnqu4W1RtLwuBsTBpdg?e=8vwfEF">Read the 2025 Announcement (Thai)</a></div>
+  <!-- ===== Project stepper ===== -->
+  <nav class="stepper" aria-label="Project stages">
+    <a class="step-card" href="project-en.html" aria-current="step"><span class="n">1</span><span><b>During the Project</b><small>Lab access, funding, forms</small></span></a>
+    <span class="arrow" aria-hidden="true">→</span>
+    <a class="step-card" href="capstone.html"><span class="n">2</span><span><b>Project Examination</b><small>Submit request, track status, evaluation</small></span></a>
+  </nav>
+</div></div>
+
+<div class="wrap"><div class="actions">
+  <a href="https://cste.sut.ac.th/Project1/"><b>KN.1 System (คง.1)</b><span>Request equipment and laboratory use</span></a>
+  <a href="https://boffice.sut.ac.th/bachelor.prj/"><b>Project Funding System</b><span>Apply for funding, installments 1 and 2</span></a>
+  <a href="#forms"><b>Download Forms</b><span>Project proposal and progress report</span></a>
+</div></div>
+
+
+<!-- ===== Project schedule (dates are edited in schedule.js) ===== -->
+<section class="sched" id="schedule"><div class="wrap">
+  <details class="sched-box">
+    <summary>
+      <span class="sched-sum"><span class="ico" aria-hidden="true">📅</span><span><b id="schedTitle">Project Schedule</b><small id="schedNote">Click to see the deadline for each step</small></span></span>
+      <span class="sched-toggle"><span class="t-open">View schedule</span><span class="t-close">Hide</span> <span class="chev" aria-hidden="true">▾</span></span>
+    </summary>
+    <div class="sched-table" role="table" aria-labelledby="schedTitle">
+      <div class="sched-row sched-th" role="row"><span role="columnheader">Step</span><span role="columnheader">Deadline</span><span role="columnheader">Submit via</span><span role="columnheader">Status</span></div>
+      <div id="schedBody"></div>
+    </div>
+    <p class="sched-foot">Dates may change according to announcements from the Institute of Engineering. The latest announcement always applies.</p>
+  </details>
+</div></section>
+<style>
+.lang-sw{display:inline-flex;width:fit-content;align-self:flex-start;align-items:center;gap:6px;margin:0 0 14px;padding:5px 14px;border-radius:999px;border:1px solid rgba(255,255,255,.35);color:#fff;text-decoration:none;font-size:.88rem;font-weight:600}
+.lang-sw:hover{background:rgba(255,255,255,.1);border-color:var(--accent)}
+.sched{padding-block:40px 0}
+.sched-box{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:14px;overflow:hidden}
+.sched-box summary{list-style:none;cursor:pointer;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:10px 20px;padding:16px 20px}
+.sched-box summary::-webkit-details-marker{display:none}
+.sched-box summary:hover{background:var(--tint)}
+.sched-box summary:focus-visible{outline:2px solid var(--accent);outline-offset:-2px}
+.sched-sum{display:flex;gap:12px;align-items:center;min-width:0}
+.sched-sum .ico{font-size:1.4rem}
+.sched-sum b{display:block;font-size:1.08rem}
+.sched-sum small{display:block;color:var(--muted);font-size:.88rem}
+.sched-sum small strong{color:var(--accent)}
+.sched-toggle{display:inline-flex;align-items:center;gap:6px;font-weight:600;color:var(--accent);border:1px solid var(--accent);border-radius:999px;padding:6px 14px;font-size:.88rem;white-space:nowrap}
+.sched-toggle .chev{transition:transform .2s}
+.sched-box[open] .sched-toggle .chev{transform:rotate(180deg)}
+.sched-box .t-close,.sched-box[open] .t-open{display:none}
+.sched-box[open] .t-close{display:inline}
+.sched-box[open] summary{border-bottom:1px solid var(--line)}
+.sched-foot{margin:0;padding:10px 20px 14px;font-size:.82rem;color:var(--muted)}
+.sched-table{background:var(--surface)}
+.sched-row{display:grid;grid-template-columns:minmax(0,2.2fr) minmax(0,1.3fr) minmax(0,1.3fr) 150px;gap:16px;align-items:center;padding:14px 20px;border-top:1px solid var(--line)}
+.sched-th{border-top:0;background:var(--bg);font-size:.82rem;font-weight:600;color:var(--muted);padding-block:10px}
+.sched-row .what{display:flex;gap:12px;align-items:center;min-width:0}
+.sched-row .no{flex:none;width:28px;height:28px;border-radius:50%;display:grid;place-items:center;font-weight:700;font-size:.85rem;background:var(--tint);color:var(--accent)}
+.sched-row .what b{display:block}
+.sched-row .what small{display:block;color:var(--muted);font-size:.82rem}
+.sched-row .date{font-weight:600}
+.sched-row .date small{display:block;font-weight:400;color:var(--muted);font-size:.8rem}
+.sched-row .where{font-size:.9rem}
+.sched-row .where a{color:var(--accent)}
+.badge{display:inline-flex;align-items:center;gap:6px;border-radius:999px;padding:4px 12px;font-size:.8rem;font-weight:600;white-space:nowrap;justify-self:start}
+.badge.soon{background:var(--accent);color:var(--accent-ink)}
+.badge.open{background:var(--tint);color:var(--accent)}
+.badge.later{background:var(--bg);color:var(--ink);border:1px solid var(--line)}
+.badge.past{background:transparent;color:var(--muted);border:1px dashed var(--line)}
+.badge.tba{background:transparent;color:var(--muted);border:1px solid var(--line)}
+.sched-row.is-past .what b,.sched-row.is-past .date{color:var(--muted)}
+.sched-row.is-soon{background:var(--tint)}
+.sched-row.is-soon .no{background:var(--accent);color:var(--accent-ink)}
+@media (max-width:760px){
+  .sched-th{display:none}
+  .sched-row{grid-template-columns:1fr auto;grid-template-areas:"what badge" "date date" "where where";gap:6px 12px}
+  .sched-row .what{grid-area:what}.sched-row .badge{grid-area:badge;justify-self:end}
+  .sched-row .date{grid-area:date;padding-left:40px}.sched-row .where{grid-area:where;padding-left:40px}
+  .sched-row .where:has(.none){display:none}
+  .sched-row .date::before{content:"Deadline: ";font-weight:400;color:var(--muted)}
+}
+</style>
+
+<section style="padding-block:64px 32px" id="kong1"><div class="wrap">
+  <div class="sec-head">
+    <p class="eyebrow">Step 1</p>
+    <h2>Submit the KN.1 Form (คง.1) for Laboratory Access</h2>
+    <p class="lede">Request the use of equipment and laboratories at the Center for Scientific and Technological Equipment. You need the KN.1 form printed from the system and your Safety Card (safety training certificate).</p>
+  </div>
+  <ol class="steps">
+    <li><div><b>Fill in the form in the KN.1 system</b><p>Go to <a href="https://cste.sut.ac.th/Project1/">cste.sut.ac.th/Project1</a>, complete all fields, then export the file to PDF.</p></div></li>
+    <li><div><b>Get your advisor’s signature</b><p>Send the KN.1 form to your project advisor. An electronic signature is accepted.</p></div></li>
+    <li><div><b>Send the signed form (PDF) to the School Secretary</b><p>Via LINE or e-mail: wannaporn@sut.ac.th</p></div></li>
+    <li><div><b>The Secretary forwards it to the Head of School</b><p>Please wait for the document.</p></div></li>
+    <li><div><b>The Secretary forwards it to the Dean</b><p>This takes 1–2 working days. Once approved, the form is returned to you.</p></div></li>
+    <li><div><b>Upload the fully signed form to the system</b><p>Receive the file from the School, then upload it to <a href="https://cste.sut.ac.th/Project1/">cste.sut.ac.th/Project1</a>.</p></div></li>
+  </ol>
+  <p class="note" style="margin-top:16px">Problems with the KN.1 system? Contact Ms. Nongnapas (P’Koi), tel. 0-4422-3215.</p>
+</div></section>
+
+<section style="padding-block:32px 64px" id="budget"><div class="wrap">
+  <div class="sec-head">
+    <p class="eyebrow">Step 2</p>
+    <h2>Apply for Project Funding</h2>
+    <p class="lede">Apply through the <a href="https://boffice.sut.ac.th/bachelor.prj/" style="color:var(--accent)">Undergraduate Project Management System</a>. Funding is paid in 2 installments, and both must be submitted within the trimester in which you are enrolled in the project course.</p>
+  </div>
+  <div class="two">
+    <article class="panel">
+      <span class="when">Open from week 2 of the trimester</span>
+      <h3>Installment 1</h3>
+      <ul>
+        <li>Signatures of all group members, uploaded in the <a href="https://boffice.sut.ac.th/bachelor.prj/" style="color:var(--accent)">Undergraduate Project Management System</a></li>
+        <li>Project proposal on form <a href="#forms">FM-ENG-PROJECT-PROPOSAL</a>, reviewed by your advisor</li>
+        <li>Copies of the bank book of every member, combined into one PDF file</li>
+        <li>Course registration records (Reg) of every member, combined into one PDF file</li>
+      </ul>
+    </article>
+    <article class="panel">
+      <span class="when">Submit after receiving installment 1</span>
+      <h3>Installment 2</h3>
+      <ul>
+        <li>Progress report on form <a href="#forms">FM-ENG-PROJECT-PROGRESS</a>, reviewed by your advisor</li>
+        <li>Proof of payment (receipts)</li>
+        <li>Spending plan for installment 2 (<a href="https://drive.google.com/file/d/1FJGxfgjUR8g8bXQAtyUWlA-mhr9a7YZD/view?usp=sharing">see example</a>)</li>
+      </ul>
+      <p style="font-size:.9rem;color:var(--muted)">When to submit installment 2: you have all receipts for installment 1 but spent more than its amount, or you have only some of the receipts for installment 1 so far.</p>
+    </article>
+  </div>
+</div></section>
+
+<section class="band" id="forms"><div class="wrap">
+  <div class="sec-head">
+    <p class="eyebrow">Downloads</p>
+    <h2>Download Forms</h2>
+  </div>
+  <div class="files">
+    <a class="file" href="https://sutoffice365-my.sharepoint.com/:w:/g/personal/pranitta_sut_ac_th/IQA_NOCmh-wHRYn2JtA6nqCFAf4xnL3r5ap86WdPaX3aSIY?e=FXuA2I"><span class="ext">DOCX</span><span>Project Proposal Form FM-ENG-PROJECT-PROPOSAL<small>For installment 1</small></span></a>
+    <a class="file" href="https://sutoffice365-my.sharepoint.com/:w:/g/personal/pranitta_sut_ac_th/IQC7P0tkIFHqRLKj4XPnVYS8AdonNfiG4qwVnM2lYPejHUM?e=rbaI4c"><span class="ext">DOCX</span><span>Progress Report Form FM-ENG-PROJECT-PROGRESS<small>For installment 2</small></span></a>
+    <a class="file" href="https://drive.google.com/file/d/1FJGxfgjUR8g8bXQAtyUWlA-mhr9a7YZD/view?usp=sharing"><span class="ext">EXAMPLE</span><span>Example spending plan for installment 2<small>Google Drive</small></span></a>
+  </div>
+  <p class="note" style="margin-top:20px"><b>Important:</b> The forms are Word files. Always download a copy to your computer before filling it in. Do not type into the original file opened online, because your information could be visible to others who download it.</p>
+</div></section>
+
+<section style="padding-block:56px 0"><div class="wrap">
+  <a class="next" href="capstone.html"><span><small>Next step</small><b>Request the Project Examination</b><span>When your project is complete, submit your exam request online. The system e-mails your advisor automatically.</span></span><span class="go" aria-hidden="true">→</span></a>
+</div></section>
+
+<section id="ask" style="padding-block:56px 72px"><div class="wrap">
+  <div class="sec-head">
+    <p class="eyebrow">Contact</p>
+    <h2>Questions about Project Funding</h2>
+  </div>
+  <div class="contact">
+    <div><small>Coordinator</small><span>Ms. Wannaporn Thianthananithikul (P’Khanomtan)</span></div>
+    <div><small>Phone</small><b>044-224-431</b></div>
+    <div><small>E-mail</small><b>wannaporn@sut.ac.th</b></div>
+  </div>
+</div></section>
+</main>
+  
+<footer id="contact"><div class="wrap">
+  <div>
+    <h3>School of Polymer Engineering</h3>
+    <p>Academic Building 1, 4th Floor, Institute of Engineering<br>Suranaree University of Technology<br>111 University Avenue, Suranaree, Mueang<br>Nakhon Ratchasima 30000, Thailand</p>
+  </div>
+  <div>
+    <h3>Menu</h3>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="programs.html">Programs</a></li>
+      <li><a href="index.html#research">Research</a></li>
+      <li><a href="index.html#news">News</a></li>
+    </ul>
+  </div>
+  <div>
+    <h3>Follow Us</h3>
+    <ul>
+      <li><a href="https://www.facebook.com/EngineeringSUT">Facebook</a></li>
+      <li><a href="https://www.youtube.com/@EngineeringSUT">YouTube</a></li>
+    </ul>
+  </div>
+  <p class="copy">© 2026 School of Polymer Engineering, Suranaree University of Technology</p>
+</div></footer>
+
+<script>
+const mb=document.getElementById('menuBtn'),menu=document.getElementById('menu');
+mb.addEventListener('click',()=>{const o=menu.classList.toggle('open');mb.setAttribute('aria-expanded',o)});
+</script>
+<script src="schedule.js"></script>
+</body>
+</html>

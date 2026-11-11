@@ -4,6 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title> โครงงานวิศวกรรม | Capstone Polymer Engineering Project</title>
+<link rel="alternate" hreflang="th" href="project.html">
+<link rel="alternate" hreflang="en" href="project-en.html">
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bai+Jamjuree:wght@500;600;700&family=IBM+Plex+Sans+Thai:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <link rel="stylesheet" href="style.css">
@@ -48,6 +50,7 @@
 <main>
 <div class="page-head"><div class="wrap" style="padding-block:44px 64px">
   <p class="crumbs"><a href="index.html">หน้าแรก</a> / <a href="students.html">นักศึกษาปัจจุบัน</a> / โครงงานวิศวกรรม</p>
+  <a class="lang-sw" href="project-en.html" hreflang="en" lang="en">🌐 English</a>
   <h1>โครงงานวิศวกรรม</h1>
   <p>ขั้นตอนขอใช้ห้องปฏิบัติการ ขออนุมัติค่าใช้จ่ายโครงงาน และแบบฟอร์มที่ต้องใช้ สำหรับนักศึกษาที่ลงทะเบียนรายวิชาโครงงานตั้งแต่ภาคการศึกษา 2/2568 เป็นต้นไป</p>
   <div class="cta"><a class="btn primary" href="https://sutoffice365-my.sharepoint.com/:b:/g/personal/253027_office365_sut_ac_th/EcWE-rXZLO1BsYa_o-PBh3ABCODqnqu4W1RtLwuBsTBpdg?e=8vwfEF">อ่านประกาศฉบับใหม่ พ.ศ. 2568</a></div>
@@ -66,7 +69,7 @@
 </div></div>
 
 
-<!-- ===== กำหนดการโครงงาน (แก้วันที่ได้ที่ SCHEDULE ในสคริปต์ท้ายไฟล์) ===== -->
+<!-- ===== กำหนดการโครงงาน (แก้วันที่ได้ที่ไฟล์ schedule.js) ===== -->
 <section class="sched" id="schedule"><div class="wrap">
   <details class="sched-box">
     <summary>
@@ -81,6 +84,8 @@
   </details>
 </div></section>
 <style>
+.lang-sw{display:inline-flex;width:fit-content;align-self:flex-start;align-items:center;gap:6px;margin:0 0 14px;padding:5px 14px;border-radius:999px;border:1px solid rgba(255,255,255,.35);color:#fff;text-decoration:none;font-size:.88rem;font-weight:600}
+.lang-sw:hover{background:rgba(255,255,255,.1);border-color:var(--accent)}
 .sched{padding-block:40px 0}
 .sched-box{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:14px;overflow:hidden}
 .sched-box summary{list-style:none;cursor:pointer;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:10px 20px;padding:16px 20px}
@@ -234,52 +239,6 @@
 const mb=document.getElementById('menuBtn'),menu=document.getElementById('menu');
 mb.addEventListener('click',()=>{const o=menu.classList.toggle('open');mb.setAttribute('aria-expanded',o)});
 </script>
-<script>
-/* ===== กำหนดการโครงงาน: แก้ไขได้ที่นี่ =====
-   TERM   ชื่อภาคการศึกษาที่แสดงบนหัวตาราง
-   วันที่  เขียนแบบ ปี-เดือน-วัน เป็น ค.ศ. เช่น "2027-01-15" (= 15 ม.ค. 2570)
-          from = วันเริ่มยื่น (ถ้ามี) · due = วันสุดท้าย · ถ้ายังไม่ทราบ ใส่ "" จะขึ้นว่า "รอประกาศ"
-   link   ลิงก์ที่จะยื่น (ใส่ "#kong1" = ไปขั้นตอนในหน้านี้)
-   เพิ่ม/ลบแถวได้ ลำดับในตารางเรียงตามที่เขียนไว้                                            */
-const TERM = "ภาคการศึกษา 2/2569";
-const SCHEDULE = [
-  { what:"ยื่นแบบ คง.1 ขอใช้ห้องปฏิบัติการ", sub:"ส่ง PDF ที่อาจารย์ลงนามแล้วให้เลขาสาขาวิชา", from:"", due:"2026-12-15", where:"ระบบ คง.1", link:"#kong1" },
-  { what:"ยื่นเบิกค่าใช้จ่าย งวดที่ 1",       sub:"พร้อมโครงร่างโครงงาน (FM-ENG-PROJECT-PROPOSAL)",  from:"", due:"2026-12-15", where:"ระบบเบิกค่าใช้จ่ายโครงงาน", link:"#budget" },
-  { what:"ยื่นเบิกค่าใช้จ่าย งวดที่ 2",       sub:"พร้อมรายงานความก้าวหน้า (FM-ENG-PROJECT-PROGRESS)", from:"", due:"2027-01-31", where:"ระบบเบิกค่าใช้จ่ายโครงงาน", link:"#budget" },
-  { what:"ยื่นขอสอบโครงงานเทอม 2/2569", sub:"ผ่านระบบ PE Capstone Portal", from:"", due:"2027-02-04", where:"PE Capstone Portal",      link:"capstone.html" },
-  { what:"ช่วงวันสอบโครงงาน",            sub:"ตามวันเวลาที่กรรมการนัดหมาย",  from:"", due:"2027-02-10", where:"",                        link:"" },
-  { what:"ส่งเล่มรายงานฉบับสมบูรณ์",       sub:"หลังแก้ไขตามคำแนะนำของกรรมการสอบ", from:"", due:"2027-02-14", where:"",                        link:"" }
-];
-/* ===== จบข้อมูล ===== */
-(function(){
-  const M=["ม.ค.","ก.พ.","มี.ค.","เม.ย.","พ.ค.","มิ.ย.","ก.ค.","ส.ค.","ก.ย.","ต.ค.","พ.ย.","ธ.ค."];
-  const D=["อา.","จ.","อ.","พ.","พฤ.","ศ.","ส."];
-  const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
-  const day=s=>{const m=/^(\d{4})-(\d{2})-(\d{2})$/.exec(s||"");return m?new Date(+m[1],+m[2]-1,+m[3]):null};
-  const th=d=>D[d.getDay()]+" "+d.getDate()+" "+M[d.getMonth()]+" "+(d.getFullYear()+543);
-  const today=new Date();today.setHours(0,0,0,0);
-  document.getElementById("schedTitle").textContent="กำหนดการโครงงาน "+TERM;
-  let nextLeft=null;
-  let next=null;
-  document.getElementById("schedBody").innerHTML=SCHEDULE.map((r,i)=>{
-    const f=day(r.from),d=day(r.due);let cls="",badge;
-    if(!d) badge='<span class="badge tba">รอประกาศ</span>';
-    else{
-      const left=Math.round((d-today)/864e5);
-      if(left<0){cls="is-past";badge='<span class="badge past">เลยกำหนดแล้ว</span>'}
-      else if(f&&today<f){badge='<span class="badge later">เริ่ม '+f.getDate()+" "+M[f.getMonth()]+'</span>'}
-      else if(left<=7){cls="is-soon";badge='<span class="badge soon">'+(left===0?"วันนี้วันสุดท้าย":"เหลืออีก "+left+" วัน")+'</span>'}
-      else if(f){badge='<span class="badge open">เปิดยื่นแล้ว · อีก '+left+' วัน</span>'}
-      else badge='<span class="badge later">อีก '+left+' วัน</span>';
-      if(left>=0&&!next){next=r;nextLeft=left}
-    }
-    const date=d?(f?th(f)+" –<br>"+th(d):"ภายใน "+th(d)):'<span style="color:var(--muted);font-weight:400">รอประกาศ</span>';
-    const where=r.where?(r.link?'<a href="'+esc(r.link)+'">'+esc(r.where)+' →</a>':esc(r.where)):'<span class="none" style="color:var(--muted)">–</span>';
-    return '<div class="sched-row '+cls+'" role="row"><div class="what" role="cell"><span class="no">'+(i+1)+'</span><span><b>'+esc(r.what)+'</b>'+(r.sub?'<small>'+esc(r.sub)+'</small>':'')+'</span></div>'+
-      '<div class="date" role="cell">'+date+'</div><div class="where" role="cell">'+where+'</div>'+badge+'</div>';
-  }).join("");
-  if(next)document.getElementById("schedNote").innerHTML="ถัดไป: <strong>"+esc(next.what)+"</strong> · "+(nextLeft===0?"วันนี้วันสุดท้าย":"เหลืออีก "+nextLeft+" วัน");
-})();
-</script>
+<script src="schedule.js"></script>
 </body>
 </html>
