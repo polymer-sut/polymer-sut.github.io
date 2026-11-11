@@ -68,22 +68,38 @@
 
 <!-- ===== กำหนดการโครงงาน (แก้วันที่ได้ที่ SCHEDULE ในสคริปต์ท้ายไฟล์) ===== -->
 <section class="sched" id="schedule"><div class="wrap">
-  <div class="sched-head">
-    <div><p class="eyebrow">กำหนดการ</p><h2 id="schedTitle">กำหนดการโครงงาน</h2></div>
-    <p class="note" id="schedNote"></p>
-  </div>
-  <div class="sched-table" role="table" aria-labelledby="schedTitle">
-    <div class="sched-row sched-th" role="row"><span role="columnheader">ขั้นตอน</span><span role="columnheader">กำหนดส่ง</span><span role="columnheader">ยื่นที่</span><span role="columnheader">สถานะ</span></div>
-    <div id="schedBody"></div>
-  </div>
-  <p class="note" style="margin-top:12px">วันที่อาจเปลี่ยนแปลงตามประกาศของสำนักวิชา ยึดตามประกาศล่าสุดเป็นหลัก</p>
+  <details class="sched-box">
+    <summary>
+      <span class="sched-sum"><span class="ico" aria-hidden="true">📅</span><span><b id="schedTitle">กำหนดการโครงงาน</b><small id="schedNote">กดเพื่อดูวันที่ต้องยื่นแต่ละขั้นตอน</small></span></span>
+      <span class="sched-toggle"><span class="t-open">ดูกำหนดการ</span><span class="t-close">ซ่อน</span> <span class="chev" aria-hidden="true">▾</span></span>
+    </summary>
+    <div class="sched-table" role="table" aria-labelledby="schedTitle">
+      <div class="sched-row sched-th" role="row"><span role="columnheader">ขั้นตอน</span><span role="columnheader">กำหนดส่ง</span><span role="columnheader">ยื่นที่</span><span role="columnheader">สถานะ</span></div>
+      <div id="schedBody"></div>
+    </div>
+    <p class="sched-foot">วันที่อาจเปลี่ยนแปลงตามประกาศของสำนักวิชา ยึดตามประกาศล่าสุดเป็นหลัก</p>
+  </details>
 </div></section>
 <style>
-.sched{padding-block:48px 8px}
-.sched-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:8px 24px;margin-bottom:18px}
-.sched-head h2{margin:4px 0 0}
-.sched-head .note{margin:0}
-.sched-table{background:var(--surface);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.sched{padding-block:40px 0}
+.sched-box{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:14px;overflow:hidden}
+.sched-box summary{list-style:none;cursor:pointer;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:10px 20px;padding:16px 20px}
+.sched-box summary::-webkit-details-marker{display:none}
+.sched-box summary:hover{background:var(--tint)}
+.sched-box summary:focus-visible{outline:2px solid var(--accent);outline-offset:-2px}
+.sched-sum{display:flex;gap:12px;align-items:center;min-width:0}
+.sched-sum .ico{font-size:1.4rem}
+.sched-sum b{display:block;font-size:1.08rem}
+.sched-sum small{display:block;color:var(--muted);font-size:.88rem}
+.sched-sum small strong{color:var(--accent)}
+.sched-toggle{display:inline-flex;align-items:center;gap:6px;font-weight:600;color:var(--accent);border:1px solid var(--accent);border-radius:999px;padding:6px 14px;font-size:.88rem;white-space:nowrap}
+.sched-toggle .chev{transition:transform .2s}
+.sched-box[open] .sched-toggle .chev{transform:rotate(180deg)}
+.sched-box .t-close,.sched-box[open] .t-open{display:none}
+.sched-box[open] .t-close{display:inline}
+.sched-box[open] summary{border-bottom:1px solid var(--line)}
+.sched-foot{margin:0;padding:10px 20px 14px;font-size:.82rem;color:var(--muted)}
+.sched-table{background:var(--surface)}
 .sched-row{display:grid;grid-template-columns:minmax(0,2.2fr) minmax(0,1.3fr) minmax(0,1.3fr) 150px;gap:16px;align-items:center;padding:14px 20px;border-top:1px solid var(--line)}
 .sched-th{border-top:0;background:var(--bg);font-size:.82rem;font-weight:600;color:var(--muted);padding-block:10px}
 .sched-row .what{display:flex;gap:12px;align-items:center;min-width:0}
@@ -243,6 +259,7 @@ const SCHEDULE = [
   const th=d=>D[d.getDay()]+" "+d.getDate()+" "+M[d.getMonth()]+" "+(d.getFullYear()+543);
   const today=new Date();today.setHours(0,0,0,0);
   document.getElementById("schedTitle").textContent="กำหนดการโครงงาน "+TERM;
+  let nextLeft=null;
   let next=null;
   document.getElementById("schedBody").innerHTML=SCHEDULE.map((r,i)=>{
     const f=day(r.from),d=day(r.due);let cls="",badge;
@@ -254,14 +271,14 @@ const SCHEDULE = [
       else if(left<=7){cls="is-soon";badge='<span class="badge soon">'+(left===0?"วันนี้วันสุดท้าย":"เหลืออีก "+left+" วัน")+'</span>'}
       else if(f){badge='<span class="badge open">เปิดยื่นแล้ว · อีก '+left+' วัน</span>'}
       else badge='<span class="badge later">อีก '+left+' วัน</span>';
-      if(left>=0&&!next)next=r;
+      if(left>=0&&!next){next=r;nextLeft=left}
     }
     const date=d?(f?th(f)+" –<br>"+th(d):"ภายใน "+th(d)):'<span style="color:var(--muted);font-weight:400">รอประกาศ</span>';
     const where=r.where?(r.link?'<a href="'+esc(r.link)+'">'+esc(r.where)+' →</a>':esc(r.where)):'<span class="none" style="color:var(--muted)">–</span>';
     return '<div class="sched-row '+cls+'" role="row"><div class="what" role="cell"><span class="no">'+(i+1)+'</span><span><b>'+esc(r.what)+'</b>'+(r.sub?'<small>'+esc(r.sub)+'</small>':'')+'</span></div>'+
       '<div class="date" role="cell">'+date+'</div><div class="where" role="cell">'+where+'</div>'+badge+'</div>';
   }).join("");
-  document.getElementById("schedNote").textContent=next?"ถัดไป: "+next.what:"";
+  if(next)document.getElementById("schedNote").innerHTML="ถัดไป: <strong>"+esc(next.what)+"</strong> · "+(nextLeft===0?"วันนี้วันสุดท้าย":"เหลืออีก "+nextLeft+" วัน");
 })();
 </script>
 </body>
